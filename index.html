@@ -77,7 +77,9 @@
 			
 			$scope.gridOptions = { 
 				data: 'myData',
-				columnDefs: [{field:'name', displayName:'Name'}, {field:'age', displayName:'Age'}],
+				columnDefs: [{field:'name', displayName:'Name'},
+							{field:'allowance', displayName:'Allowance'},
+							{field:'paid', displayName:'Paid'}],
 				showGroupPanel: true, //group by column html5
 				jqueryUIDraggable: true, //group by column jquery
 				enablePaging: true,
