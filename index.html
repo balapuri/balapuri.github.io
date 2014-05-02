@@ -1,46 +1,92 @@
-<html>
-  <body>
-    <audio controls autoplay></audio>
-    <script type="text/javascript" src="recorder.js"> </script>
-
-    <input onclick="startRecording()" type="button" value="start recording" />
-    <input onclick="stopRecording()" type="button" value="stop recording and play" />
-
-    <script>
-      var onFail = function(e) {
-        console.log('Rejected!', e);
-      };
-
-      var onSuccess = function(s) {
-        var context = new webkitAudioContext();
-        var mediaStreamSource = context.createMediaStreamSource(s);
-        recorder = new Recorder(mediaStreamSource);
-        recorder.record();
-
-        // audio loopback
-        // mediaStreamSource.connect(context.destination);
-      }
-
-      window.URL = window.URL || window.webkitURL;
-      navigator.getUserMedia  = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;
-
-      var recorder;
-      var audio = document.querySelector('audio');
-
-      function startRecording() {
-        if (navigator.getUserMedia) {
-          navigator.webkitGetUserMedia({audio: true}, onSuccess, onFail);
-        } else {
-          console.log('navigator.getUserMedia not present');
-        }
-      }
-
-      function stopRecording() {
-        recorder.stop();
-        recorder.exportWAV(function(s) {
-          audio.src = window.URL.createObjectURL(s);
-        });
-      }
-    </script>
-  </body>
+<html ng-app="myApp">  
+    <head lang="en">
+        <meta charset="utf-8">
+        <title>Grid Example</title>  
+        <link rel="stylesheet" type="text/css" href="http://angular-ui.github.com/ng-grid/css/ng-grid.css" />
+		<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+		<script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.2/angular.min.js"></script>
+        <script src="http://angular-ui.github.com/ng-grid/lib/ng-grid.debug.js"></script>
+    </head>
+	<style>
+	/*style.css*/
+		.gridStyle {
+			border: 1px solid rgb(212,212,212);
+			width: 400px; 
+			height: 300px
+		}
+	</style>
+    <body ng-controller="MyCtrl">
+        <div class="gridStyle" ng-grid="gridOptions">
+        </div>
+    </body>
+	<script>
+	// main.js
+		var app = angular.module('myApp', ['ngGrid']);
+		app.controller('MyCtrl', function($scope, $http) {
+		
+			$scope.filterOptions = {
+				filterText: "",
+				useExternalFilter: true
+			};
+			$scope.totalServerItems = 0;
+			$scope.pagingOptions = {
+				pageSizes: [5, 10, 20],
+				pageSize: 5,
+				currentPage: 1
+			};  
+			$scope.setPagingData = function(data, page, pageSize){	
+				var pagedData = data.slice((page - 1) * pageSize, page * pageSize);
+				$scope.myData = pagedData;
+				$scope.totalServerItems = data.length;
+				if (!$scope.$$phase) {
+					$scope.$apply();
+				}
+			};
+			$scope.getPagedDataAsync = function (pageSize, page, searchText) {
+				setTimeout(function () {
+					var data;
+					if (searchText) {
+						var ft = searchText.toLowerCase();
+						$http.get('largeLoad.json').success(function (largeLoad) {					
+							data = largeLoad.filter(function(item) {
+								return JSON.stringify(item).toLowerCase().indexOf(ft) != -1;
+							});
+							$scope.setPagingData(data,page,pageSize);
+						});            
+					} else {
+						$http.get('largeLoad.json').success(function (largeLoad) {
+							$scope.setPagingData(largeLoad,page,pageSize);
+						});
+					}
+				}, 100);
+			};
+			
+			$scope.getPagedDataAsync($scope.pagingOptions.pageSize, $scope.pagingOptions.currentPage);
+			
+			$scope.$watch('pagingOptions', function (newVal, oldVal) {
+				if (newVal !== oldVal && newVal.currentPage !== oldVal.currentPage) {
+				  $scope.getPagedDataAsync($scope.pagingOptions.pageSize, $scope.pagingOptions.currentPage, $scope.filterOptions.filterText);
+				}
+			}, true);
+			$scope.$watch('filterOptions', function (newVal, oldVal) {
+				if (newVal !== oldVal) {
+				  $scope.getPagedDataAsync($scope.pagingOptions.pageSize, $scope.pagingOptions.currentPage, $scope.filterOptions.filterText);
+				}
+			}, true);
+			
+			$scope.gridOptions = { 
+				data: 'myData',
+				columnDefs: [{field:'name', displayName:'Name'}, {field:'age', displayName:'Age'}],
+				showGroupPanel: true, //group by column html5
+				jqueryUIDraggable: true, //group by column jquery
+				enablePaging: true,
+				showFooter: true,
+				totalServerItems:'totalServerItems',
+				pagingOptions: $scope.pagingOptions,
+				filterOptions: $scope.filterOptions,
+				enableColumnResize:true
+    };
+});
+	</script>
 </html>
