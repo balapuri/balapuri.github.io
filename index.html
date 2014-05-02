@@ -12,8 +12,8 @@
 	/*style.css*/
 		.gridStyle {
 			border: 1px solid rgb(212,212,212);
-			width: 400px; 
-			height: 300px
+			width: 75%; 
+			height: 500px;
 		}
 	</style>
     <body ng-controller="MyCtrl">
@@ -87,7 +87,9 @@
 				totalServerItems:'totalServerItems',
 				pagingOptions: $scope.pagingOptions,
 				filterOptions: $scope.filterOptions,
-				enableColumnResize:true
+				enableColumnResize:true`,
+				showColumnMenu: true,
+				showFilter: true
     };
 });
 	</script>
