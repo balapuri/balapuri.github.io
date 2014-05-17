@@ -34,7 +34,8 @@
 				pageSizes: [5, 10, 20],
 				pageSize: 5,
 				currentPage: 1
-			};  
+			};
+			$scope.sortInfo = {fields: ['name'], directions: ['asc']};
 			$scope.setPagingData = function(data, page, pageSize){	
 				var pagedData = data.slice((page - 1) * pageSize, page * pageSize);
 				$scope.myData = pagedData;
