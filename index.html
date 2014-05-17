@@ -35,8 +35,10 @@
 				pageSize: 5,
 				currentPage: 1
 			};
-			$scope.sortInfo = {fields: ['name'], directions: ['asc']};
+			$scope.allData;
+			$scope.sortInfo = {fields: [], directions: []};
 			$scope.setPagingData = function(data, page, pageSize){	
+				$scope.allData = data;
 				var pagedData = data.slice((page - 1) * pageSize, page * pageSize);
 				$scope.myData = pagedData;
 				$scope.totalServerItems = data.length;
