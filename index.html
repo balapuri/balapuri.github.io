@@ -19,6 +19,7 @@
     <body ng-controller="MyCtrl">
         <div class="gridStyle" ng-grid="gridOptions">
         </div>
+		<p>Number of Selected Items: {{gridOptions.selectedItems.length}}</p>
     </body>
 	<script>
 	// main.js
@@ -90,7 +91,9 @@
 				filterOptions: $scope.filterOptions,
 				enableColumnResize:true,
 				showColumnMenu: true,
-				showFilter: true
+				showFilter: true,
+				selectWithCheckboxOnly: true, // uses a checkbox instead of being able to click on whole row
+				selectedItems: []
     };
 });
 	</script>
