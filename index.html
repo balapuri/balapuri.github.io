@@ -64,6 +64,27 @@
 			
 			$scope.getPagedDataAsync($scope.pagingOptions.pageSize, $scope.pagingOptions.currentPage);
 			
+			// sort over all data
+			function sortData (field, direction) {
+			  if (!$scope.allData) {
+				console.log("no all data");
+				return;
+			  }
+			  $scope.allData.sort(function (a, b) {
+				if (direction == "asc") {
+				  return a[field] > b[field] ? 1 : -1;
+				} else {
+				  return a[field] > b[field] ? -1 : 1;
+				}
+			  })
+}
+			// sort over all data, not only the data on current page
+			$scope.$watch('sortInfo', function (newVal, oldVal) {
+			  sortData(newVal.fields[0], newVal.directions[0]);
+			  $scope.pagingOptions.currentPage = 1;
+			  setPagingData($scope.pagingOptions.currentPage, $scope.pagingOptions.pageSize)
+			}, true);
+
 			$scope.$watch('pagingOptions', function (newVal, oldVal) {
 			console.log("newVal: " + newVal + " oldVal: " + oldVal);
 				if (newVal !== oldVal) { //&& newVal.currentPage !== oldVal.currentPage) {
@@ -94,6 +115,7 @@
 				selectWithCheckboxOnly: true, // uses a checkbox instead of being able to click on whole row
 				showSelectionCheckbox: true,
 				selectedItems: [],
+				sortInfo: $scope.sortInfo,
 				useExternalSorting: true
     };
 });
