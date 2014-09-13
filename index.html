@@ -1,126 +1,65 @@
-<html ng-app="myApp">  
-    <head lang="en">
-        <meta charset="utf-8">
-        <title>Grid Example</title>  
-        <link rel="stylesheet" type="text/css" href="http://angular-ui.github.com/ng-grid/css/ng-grid.css" />
-		<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
-		<script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
-        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.2/angular.min.js"></script>
-        <script src="http://angular-ui.github.com/ng-grid/lib/ng-grid.debug.js"></script>
-    </head>
-	<style>
-	/*style.css*/
-		.gridStyle {
-			border: 1px solid rgb(212,212,212);
-			width: 75%; 
-			height: 500px;
-		}
-	</style>
-    <body ng-controller="MyCtrl">
-        <div class="gridStyle" ng-grid="gridOptions">
-        </div>
-    </body>
-	<script>
-	// main.js
-		var app = angular.module('myApp', ['ngGrid']);
-		app.controller('MyCtrl', function($scope, $http) {
-		
-			$scope.filterOptions = {
-				filterText: "",
-				useExternalFilter: true
-			};
-			$scope.totalServerItems = 0;
-			$scope.pagingOptions = {
-				pageSizes: [5, 10, 20],
-				pageSize: 5,
-				currentPage: 1
-			};
-			$scope.allData;
-			$scope.sortInfo = {fields: [], directions: []};
-			$scope.setPagingData = function(data, page, pageSize){	
-				$scope.allData = data;
-				var pagedData = data.slice((page - 1) * pageSize, page * pageSize);
-				$scope.myData = pagedData;
-				$scope.totalServerItems = data.length;
-				if (!$scope.$$phase) {
-					$scope.$apply();
-				}
-			};
-			$scope.getPagedDataAsync = function (pageSize, page, searchText) {
-				setTimeout(function () {
-					var data;
-					if (searchText) {
-						var ft = searchText.toLowerCase();
-						$http.get('largeLoad.json').success(function (largeLoad) {					
-							data = largeLoad.filter(function(item) {
-								return JSON.stringify(item).toLowerCase().indexOf(ft) != -1;
-							});
-							$scope.setPagingData(data,page,pageSize);
-						});            
-					} else {
-						$http.get('largeLoad.json').success(function (largeLoad) {
-							$scope.setPagingData(largeLoad,page,pageSize);
-						});
-					}
-				}, 100);
-			};
-			
-			$scope.getPagedDataAsync($scope.pagingOptions.pageSize, $scope.pagingOptions.currentPage);
-			
-			// sort over all data
-			function sortData (field, direction) {
-			  if (!$scope.allData) {
-				console.log("no all data");
-				return;
-			  }
-			  $scope.allData.sort(function (a, b) {
-				if (direction == "asc") {
-				  return a[field] > b[field] ? 1 : -1;
-				} else {
-				  return a[field] > b[field] ? -1 : 1;
-				}
-			  })
+<!DOCTYPE html>
+<head>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular.min.js"></script>
+<link href="http:////maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+<link href='http://fonts.googleapis.com/css?family=Lato:400,900' rel='stylesheet' type='text/css'>
+<style>
+h1 {
+	font-family: 'Lato', sans-serif;
 }
-			// sort over all data, not only the data on current page
-			$scope.$watch('sortInfo', function (newVal, oldVal) {
-			  sortData(newVal.fields[0], newVal.directions[0]);
-			  $scope.pagingOptions.currentPage = 1;
-			  setPagingData($scope.pagingOptions.currentPage, $scope.pagingOptions.pageSize)
-			}, true);
+.view-content {
+	padding: 50px 100px 0px 100px;
+}
+.window {
+	height:300px;
+}
+img {
+	width: 100%;
+	position: relative;
+	top:0px;
+	-webkit-transition: 500ms linear top;
+	z-index:2;
+}
+.window-content {
+	width: 100%;
+	height: 0px;
+	background-color:#ccc;
+	color:#fff;
+	position: relative;
+	top: -100px;
+	-webkit-transition: 300ms linear height;
+	z-index: 1;
+}
+.window:hover img {
+	width:100%;
+	top: -100px;
+}
+.window:hover .window-content {
+	height: 200px;
+}
 
-			$scope.$watch('pagingOptions', function (newVal, oldVal) {
-			console.log("newVal: " + newVal + " oldVal: " + oldVal);
-				if (newVal !== oldVal) { //&& newVal.currentPage !== oldVal.currentPage) {
-				  $scope.getPagedDataAsync($scope.pagingOptions.pageSize, $scope.pagingOptions.currentPage, $scope.filterOptions.filterText);
-				}
-			}, true);
-			$scope.$watch('filterOptions', function (newVal, oldVal) {
-				if (newVal !== oldVal) {
-				  $scope.getPagedDataAsync($scope.pagingOptions.pageSize, $scope.pagingOptions.currentPage, $scope.filterOptions.filterText);
-				}
-			}, true);
-			
-			$scope.gridOptions = { 
-				data: 'myData',
-				columnDefs: [{field:'name', displayName:'Name'},
-							{field:'allowance', displayName:'Allowance'},
-							{field:'paid', displayName:'Paid'}],
-				showGroupPanel: true, //group by column html5
-				jqueryUIDraggable: true, //group by column jquery
-				enablePaging: true,
-				showFooter: true,
-				totalServerItems:'totalServerItems',
-				pagingOptions: $scope.pagingOptions,
-				filterOptions: $scope.filterOptions,
-				enableColumnResize:true,
-				showColumnMenu: true,
-				showFilter: true,
-				selectWithCheckboxOnly: true, // uses a checkbox instead of being able to click on whole row
-				showSelectionCheckbox: true,
-				selectedItems: [],
-				sortInfo: $scope.sortInfo,
-				useExternalSorting: true
-    };
-});
-	</script>
+</style>
+
+</head>
+<body>
+	<h1> Admissions Page Copy Cat </h1>
+	<section class="view-content row">
+		<div class = "window col-md-3">
+			<img src="http://admissions.berkeley.edu/sites/default/files/cal-flag_0.jpg"/>
+			<div class = "window-content"> stuff goes here </div>
+		</div>
+		<div class = "window col-md-3">
+			<img src="http://admissions.berkeley.edu/sites/default/files/blowing-bubbles.jpg"/>
+			<div class = "window-content"> stuff goes here </div>
+		</div>
+		<div class = "window col-md-3">
+			<img src="http://admissions.berkeley.edu/sites/default/files/gate1.jpg"/>
+			<div class = "window-content"> stuff goes here </div>
+		</div>
+		<div class = "window col-md-3">
+			<img src="http://admissions.berkeley.edu/sites/default/files/cal-flag_0.jpg"/>
+			<div class = "window-content"> stuff goes here </div>
+		</div>
+	</section>
+</body>
 </html>
