@@ -5,21 +5,20 @@
 <link href='http://fonts.googleapis.com/css?family=Lato:400,900' rel='stylesheet' type='text/css'>
 <style>
 
-.view-content {
-	padding: 0px 100px 0px 100px;
+header {
+	padding: 30px 100px 80px 100px;
 }
-.col-md-3 {
+.col-md-3, .col-xs-3 {
 	margin:0;
 	padding:0;
 }
 h1 {
 	font-family: 'Lato', sans-serif;
-	padding: 30px 100px 0px 100px;
+	padding: 0px 0px 10px 0px;
 }
 h3 {
 	font-family: 'Lato', sans-serif;
 	font-style: italic;
-	padding: 0px 100px 35px 100px;
 	color:#ccc;
 }
 .window {
@@ -43,57 +42,59 @@ img {
 	top:-80px;
 	-webkit-transition: all linear 300ms;
 	z-index: 6;
+	opacity:0;
 }
 .window:hover img {
 	width:100%;
 	top: -80px;
+	z-index: 20;
 }
 .window:hover .window-content {
-	height: 80px;
-}
-
-#first-row {
-	padding: 50px 100px 0px 100px;
+	height: 200px;
+	z-index:18;
+	opacity:1;
 }
 
 </style>
 
 </head>
 <body>
-	<h1> Admissions Page Copy Cat </h1>
-	<h3> Inspiration: <a href="http://admissions.berkeley.edu/">admissions.berkeley.edu</a></h3>
+	<header>
+		<h1> Admissions Page Copy Cat </h1>
+		<h3> Inspiration: <a href="http://admissions.berkeley.edu/">admissions.berkeley.edu</a></h3>
+	</header>
 	<section class="view-content row" id="first-row">
-		<div class = "window col-md-3">
+		<div class = "window col-md-3 col-xs-3">
 			<img src="http://admissions.berkeley.edu/sites/default/files/cal-flag_0.jpg"/>
 			<div class = "window-content"> Try-hard vegan banjo ethical. Ethical post-ironic next level yr art party sriracha, Austin hashtag 3 wolf moon.</div>
 		</div>
-		<div class = "window col-md-3">
+		<div class = "window col-md-3 col-xs-3">
 			<img src="http://admissions.berkeley.edu/sites/default/files/blowing-bubbles.jpg"/>
 			<div class = "window-content"> Gluten-free put a bird on it keffiyeh, scenester drinking vinegar meh viral pour-over XOXO fingerstache sriracha.  </div>
 		</div>
-		<div class = "window col-md-3">
+		<div class = "window col-md-3 col-xs-3">
 			<img src="http://admissions.berkeley.edu/sites/default/files/gate1.jpg"/>
 			<div class = "window-content"> Selfies umami pour-over, Banksy hashtag tousled pickled fingerstache master cleanse bicycle rights try-hard. </div>
 		</div>
-		<div class = "window col-md-3">
+		<div class = "window col-md-3 col-xs-3">
 			<img src="http://admissions.berkeley.edu/sites/default/files/eyes-looking-over-book.jpg"/>
 			<div class = "window-content">  Tousled food truck bicycle rights cray. Ethnic street art chia squid, Pinterest aesthetic irony fashion. </div>
 		</div>
 	</section>
 	<section class="view-content row">
-		<div class = "window col-md-3">
+		<div class = "window col-md-3 col-xs-3">
 			<img src="http://admissions.berkeley.edu/sites/default/files/blowing-bubbles.jpg"/>
 			<div class = "window-content"> You probably haven't heard of them next level, kitsch trust fund chambray viral mustache YOLO literally. </div>
 		</div>
-		<div class = "window col-md-3">
+		<div class = "window col-md-3 col-xs-3">
 			<img src="http://admissions.berkeley.edu/sites/default/files/gate1.jpg"/>
 			<div class = "window-content"> 90's Pinterest Austin, cliche blog Intelligentsia gluten-free semiotics chambray scenester banjo. </div>
 		</div>
-		<div class = "window col-md-3">
+		<div class = "window col-md-3 col-xs-3">
 			<img src="http://admissions.berkeley.edu/sites/default/files/eyes-looking-over-book.jpg"/>
 			<div class = "window-content">  Etsy crucifix skateboard cardigan leggings.  </div>
 		</div>
-		<div class = "window col-md-3">
+		<div class = "window col-md-3 col-xs-3">
 			<img src="http://admissions.berkeley.edu/sites/default/files/cal-flag_0.jpg"/>
 			<div class = "window-content"> stuff goes here </div>
 		</div>
