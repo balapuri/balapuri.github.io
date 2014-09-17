@@ -8,9 +8,11 @@
 header {
 	padding: 30px 100px 80px 100px;
 }
+
 .col-md-3, .col-xs-3 {
 	margin:0;
 	padding:0;
+	width:320px;
 }
 h1 {
 	font-family: 'Lato', sans-serif;
@@ -22,7 +24,8 @@ h3 {
 	color:#ccc;
 }
 .window {
-	height:220px;
+	height:240px;
+	background-color:#656;
 }
 img {
 	width: 100%;
@@ -33,16 +36,29 @@ img {
 }
 .window-content {
 	width: 100%;
-	padding: 10px 10px 10px 10px;
+	padding: 20px 20px 20px 20px;
 	text-align: center;
 	height: 80px;
-	background-color:#ccc;
+	background-color:#656;
 	color:#fff;
 	position: relative;
-	top:-80px;
+	top:-100px;
 	-webkit-transition: all linear 300ms;
 	z-index: 6;
 	opacity:0;
+}
+.window .words {
+	top: -150px;
+	position:relative;
+	color: #ddd;
+	-webkit-transition: 600ms linear top;
+}
+.window .words p {
+	color: #ddd;
+	font-style: oblique;
+}
+.window .words h4 {
+	border-bottom: 1px solid #767;
 }
 .window:hover img {
 	width:100%;
@@ -60,6 +76,10 @@ box-shadow:         0px -1px 15px 0px rgba(50, 50, 50, 0.38);
 -moz-box-shadow:    0px 1px 15px 0px rgba(50, 50, 50, 0.38);
 box-shadow:         0px 1px 15px 0px rgba(50, 50, 50, 0.38);
 }
+.window:hover .words {
+	top:20px;
+	-webkit-transition: 500ms cubic-bezier(.01,.33,0,.9) top;
+}
 
 </style>
 
@@ -69,41 +89,41 @@ box-shadow:         0px 1px 15px 0px rgba(50, 50, 50, 0.38);
 		<h1> Admissions Page Copy Cat </h1>
 		<h3> Inspiration: <a href="http://admissions.berkeley.edu/">admissions.berkeley.edu</a></h3>
 	</header>
+	<div>
 	<section class="view-content row" id="first-row">
 		<div class = "window col-md-3 col-xs-3">
 			<img src="http://admissions.berkeley.edu/sites/default/files/cal-flag_0.jpg"/>
-			<div class = "window-content"> Try-hard vegan banjo ethical. Ethical post-ironic next level yr art party sriracha, Austin hashtag 3 wolf moon.</div>
+			<div class = "window-content"> <div class="words"><h4>Heading</h4><p>Try-hard vegan banjo ethical. Ethical post-ironic next level yr art party sriracha, Austin hashtag 3 wolf moon.</p></div></div>
 		</div>
 		<div class = "window col-md-3 col-xs-3">
 			<img src="http://admissions.berkeley.edu/sites/default/files/blowing-bubbles.jpg"/>
-			<div class = "window-content"> Gluten-free put a bird on it keffiyeh, scenester drinking vinegar meh viral pour-over XOXO fingerstache sriracha.  </div>
+			<div class = "window-content"> <div class="words"><p>Gluten-free put a bird on it keffiyeh, scenester drinking vinegar meh viral pour-over XOXO fingerstache sriracha.  </p></div></div>
 		</div>
 		<div class = "window col-md-3 col-xs-3">
 			<img src="http://admissions.berkeley.edu/sites/default/files/gate1.jpg"/>
-			<div class = "window-content"> Selfies umami pour-over, Banksy hashtag tousled pickled fingerstache master cleanse bicycle rights try-hard. </div>
+			<div class = "window-content"> <div class="words"><p>Selfies umami pour-over, Banksy hashtag tousled pickled fingerstache master cleanse bicycle rights try-hard. </p></div></div>
 		</div>
 		<div class = "window col-md-3 col-xs-3">
 			<img src="http://admissions.berkeley.edu/sites/default/files/eyes-looking-over-book.jpg"/>
-			<div class = "window-content">  Tousled food truck bicycle rights cray. Ethnic street art chia squid, Pinterest aesthetic irony fashion. </div>
+			<div class = "window-content">  <div class="words"><p>Tousled food truck bicycle rights cray. Ethnic street art chia squid, Pinterest aesthetic irony fashion. </p></div></div>
 		</div>
-	</section>
-	<section class="view-content row">
 		<div class = "window col-md-3 col-xs-3">
 			<img src="http://admissions.berkeley.edu/sites/default/files/blowing-bubbles.jpg"/>
-			<div class = "window-content"> You probably haven't heard of them next level, kitsch trust fund chambray viral mustache YOLO literally. </div>
+			<div class = "window-content"> <div class="words"><p>You probably haven't heard of them next level, kitsch trust fund chambray viral mustache YOLO literally. </p></div></div>
 		</div>
 		<div class = "window col-md-3 col-xs-3">
 			<img src="http://admissions.berkeley.edu/sites/default/files/gate1.jpg"/>
-			<div class = "window-content"> 90's Pinterest Austin, cliche blog Intelligentsia gluten-free semiotics chambray scenester banjo. </div>
+			<div class = "window-content"> <div class="words"><p>90's Pinterest Austin, cliche blog Intelligentsia gluten-free semiotics chambray scenester banjo. </p></div></div>
 		</div>
 		<div class = "window col-md-3 col-xs-3">
 			<img src="http://admissions.berkeley.edu/sites/default/files/eyes-looking-over-book.jpg"/>
-			<div class = "window-content">  Etsy crucifix skateboard cardigan leggings.  </div>
+			<div class = "window-content">  <div class="words"><p>Etsy crucifix skateboard cardigan leggings. </p></div> </div>
 		</div>
 		<div class = "window col-md-3 col-xs-3">
 			<img src="http://admissions.berkeley.edu/sites/default/files/cal-flag_0.jpg"/>
-			<div class = "window-content"> stuff goes here </div>
+			<div class = "window-content"> <div class="words"><p>stuff goes here </p></div></div>
 		</div>
 	</section>
+	</div>
 </body>
 </html>
