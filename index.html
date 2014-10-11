@@ -1,154 +1,61 @@
 <!DOCTYPE html>
+<html>
 <head>
-<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular.min.js"></script>
-<link href="http:////maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
-<link href='http://fonts.googleapis.com/css?family=Lato:400,900' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Roboto+Slab' rel='stylesheet' type='text/css'>
 <style>
-
-@media (max-width: 1300px) {
-.outer {
-width: 1300px;
+body {
+	font-family:'Roboto Slab', serif;
 }
-}
-
-@media (max-width: 980px) {
-.outer {
-width: 980px;
-}
-}
-@media (max-width: 660px) {
-.outer {
-width: 660px;
-}
-}
-@media (max-width: 320px) {
-.outer {
-width: 320px;
-}
-}
-
-.col-md-3, .col-xs-3 {
-	margin:0;
-	padding:0;
-	width:320px;
-}
-
-
-header {
-	padding: 30px 100px 80px 100px;
-}
-
-
-h1 {
-	font-family: 'Lato', sans-serif;
-	padding: 0px 0px 10px 0px;
-}
-h3 {
-	font-family: 'Lato', sans-serif;
-	font-style: italic;
-	color:#ccc;
-}
-.window {
-	height:240px;
-	background-color:#656;
-}
-img {
-	width: 100%;
-	position: relative;
-	top:0px;
-	-webkit-transition: 300ms linear top;
-	z-index:8;
-}
-.window-content {
-	width: 100%;
-	padding: 20px 20px 20px 20px;
+.container {
 	text-align: center;
-	height: 80px;
-	background-color:#656;
-	color:#fff;
-	position: relative;
-	top:-100px;
-	-webkit-transition: all linear 300ms;
-	z-index: 6;
-	opacity:0;
+	margin: 50px;
 }
-.window .words {
-	top: -150px;
-	position:relative;
-	color: #ddd;
-	-webkit-transition: 600ms linear top;
+h1{
+	font-size: 8em;
 }
-.window .words p {
-	color: #ddd;
-	font-style: oblique;
+
+header{
+	color:#aa6644;
+	padding:0 0 0 50px;
 }
-.window .words h4 {
-	border-bottom: 1px solid #767;
+ul{
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
 }
-.window:hover img {
-	width:100%;
-	top: -80px;
-	z-index: 20;
-	-webkit-box-shadow: 0px -1px 15px 0px rgba(50, 50, 50, 0.38);
--moz-box-shadow:    0px -1px 15px 0px rgba(50, 50, 50, 0.38);
-box-shadow:         0px -1px 15px 0px rgba(50, 50, 50, 0.38);
+li{
+	display: inline;
+	margin: 20px;
 }
-.window:hover .window-content {
-	height: 200px;
-	z-index:18;
-	opacity:1;
-	-webkit-box-shadow: 0px 1px 15px 0px rgba(50, 50, 50, 0.38);
--moz-box-shadow:    0px 1px 15px 0px rgba(50, 50, 50, 0.38);
-box-shadow:         0px 1px 15px 0px rgba(50, 50, 50, 0.38);
+a {
+	text-decoration: none;
+	color: #aa6644;
+	padding: 5px 20px 5px 20px;
+	font-size:2em;
+	border-radius: 100px;
 }
-.window:hover .words {
-	top:20px;
-	-webkit-transition: 500ms cubic-bezier(.01,.33,0,.9) top;
+a:hover {
+	color: #fff;
+	background-color: #aa6644;
 }
 
 </style>
-
 </head>
 <body>
-	<header>
-		<h1> Admissions Page Copy Cat </h1>
-		<h3> Inspiration: <a href="http://admissions.berkeley.edu/">admissions.berkeley.edu</a></h3>
+	<div class="container">
+	<header class = "sansserif">
+		<h1> I'm Maya </h1>
+		<nav>
+			<ul>
+				<li><a href = "http://behance.net/balapuri">Design</a></li>
+				<li><a href = "http://github.com/balapuri">Code</a></li>
+				<li><a href = "http://oneworldonemaya.blogspot.com">Blog</a></li>
+			</ul>
+		</nav>
 	</header>
-	<div class="outer">
-	<section class="view-content row" id="first-row">
-		<div class = "window col-md-3 col-xs-3">
-			<img src="http://admissions.berkeley.edu/sites/default/files/cal-flag_0.jpg"/>
-			<div class = "window-content"> <div class="words"><h4>Heading</h4><p>Try-hard vegan banjo ethical. Ethical post-ironic next level yr art party sriracha, Austin hashtag 3 wolf moon.</p></div></div>
-		</div>
-		<div class = "window col-md-3 col-xs-3">
-			<img src="http://admissions.berkeley.edu/sites/default/files/blowing-bubbles.jpg"/>
-			<div class = "window-content"> <div class="words"><p>Gluten-free put a bird on it keffiyeh, scenester drinking vinegar meh viral pour-over XOXO fingerstache sriracha.  </p></div></div>
-		</div>
-		<div class = "window col-md-3 col-xs-3">
-			<img src="http://admissions.berkeley.edu/sites/default/files/gate1.jpg"/>
-			<div class = "window-content"> <div class="words"><p>Selfies umami pour-over, Banksy hashtag tousled pickled fingerstache master cleanse bicycle rights try-hard. </p></div></div>
-		</div>
-		<div class = "window col-md-3 col-xs-3">
-			<img src="http://admissions.berkeley.edu/sites/default/files/eyes-looking-over-book.jpg"/>
-			<div class = "window-content">  <div class="words"><p>Tousled food truck bicycle rights cray. Ethnic street art chia squid, Pinterest aesthetic irony fashion. </p></div></div>
-		</div>
-		<div class = "window col-md-3 col-xs-3">
-			<img src="http://admissions.berkeley.edu/sites/default/files/blowing-bubbles.jpg"/>
-			<div class = "window-content"> <div class="words"><p>You probably haven't heard of them next level, kitsch trust fund chambray viral mustache YOLO literally. </p></div></div>
-		</div>
-		<div class = "window col-md-3 col-xs-3">
-			<img src="http://admissions.berkeley.edu/sites/default/files/gate1.jpg"/>
-			<div class = "window-content"> <div class="words"><p>90's Pinterest Austin, cliche blog Intelligentsia gluten-free semiotics chambray scenester banjo. </p></div></div>
-		</div>
-		<div class = "window col-md-3 col-xs-3">
-			<img src="http://admissions.berkeley.edu/sites/default/files/eyes-looking-over-book.jpg"/>
-			<div class = "window-content">  <div class="words"><p>Etsy crucifix skateboard cardigan leggings. </p></div> </div>
-		</div>
-		<div class = "window col-md-3 col-xs-3">
-			<img src="http://admissions.berkeley.edu/sites/default/files/cal-flag_0.jpg"/>
-			<div class = "window-content"> <div class="words"><p>stuff goes here </p></div></div>
-		</div>
-	</section>
+	<section id = "#about">
+		
+	<section>
 	</div>
-</body>
+	</body>
 </html>
