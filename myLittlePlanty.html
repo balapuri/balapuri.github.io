@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<head>
+<link href='http://fonts.googleapis.com/css?family=Chewy' rel='stylesheet' type='text/css'>
+</head>
+<body>
+
+
+<script language="JavaScript" src="raphael-min.js" text="text/javascript"></script>
+<script language="JavaScript" src="main.js" text="text/javascript"></script>
+<div id="grad1"></div>
+<button id="rain" onclick="triggerRain(), myLittlePlanty()">Make it rain</button>
+<script>
+function myFunction(){console.log("got in");}
+</script>
+</body>
+</html>
+
+<style>
+
+html{
+	height: 100%;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background: #70bg32;
+    background-repeat:no-repeat;
+
+	width: 100%;
+	height: 100%;
+	background: -webkit-linear-gradient(#94E9FF, #DFF8FF); /* For Safari 5.1 to 6.0 */
+  	background: -o-linear-gradient(#94E9FF, #DFF8FF); /* For Opera 11.1 to 12.0 */
+  	background: -moz-linear-gradient(#94E9FF, #DFF8FF); /* For Firefox 3.6 to 15 */
+  	background: linear-gradient(#94E9FF, #DFF8FF); /* Standard syntax */
+}
+#soil {
+	position: absolute;
+	top: 70%;
+	height: 28%;
+	width: 100%;
+	background-color: #822A12;
+	border-top: 3px dashed #545645;
+}
+button {
+	width: 200px;
+	height: 50px;
+	border: none;
+	background-color: #D5EFF0;
+	font-family:'Chewy';
+	font-size: 30px;
+	color: #A883A8;
+	border-radius: 5px;
+	box-shadow: 1px 1px 10px #CFB2CF;
+}
+</style>
