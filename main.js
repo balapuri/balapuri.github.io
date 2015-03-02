@@ -29,7 +29,7 @@ cloudArr = [24 + window.innerWidth-460, 24 + window.innerWidth-200, 24 + 130, 24
 cloudHeights = [10, 50, 50, 10, 60]
 
 
-circle = paper.circle(window.innerWidth-250, 60, 50)
+circle = paper.circle(window.innerWidth-250, 65, 50)
 circle.attr("fill", "#FFFF85")
 circle.attr("stroke", "#FFFF85")
 
