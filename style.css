@@ -56,3 +56,14 @@ margin-bottom:15px;
 		margin-left:1%;
 	}
 }
+
+#leaf a:hover {
+	background-color: #fff;
+}
+#leaf.p {
+	visibility:visible;
+}
+#leaf:hover p {
+	visibility:hidden;
+	font-size: 0.1em;
+}
